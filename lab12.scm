@@ -11,20 +11,8 @@
 (define (distance city-a city-b)
   (sqrt
     (+
-      (expt
-        (-
-          (get-lat city-a)
-          (get-lat city-b)
-        )
-        2
-      )
-      (expt
-        (-
-          (get-lon city-a)
-          (get-lon city-b)
-        )
-        2
-      )
+      (expt (- (get-lat city-a) (get-lat city-b)) 2)
+      (expt (- (get-lon city-a) (get-lon city-b)) 2)
     )
   )
 )
@@ -36,21 +24,15 @@
   )
   ; Find random-city distance from city-a
   (define random-a
-    (distance 
-      random-city
-      city-a
-    )
+    (distance random-city city-a)
   )
   ; Find random-city distance from city-b
   (define random-b
-    (distance
-      random-city
-      city-b
-    )
+    (distance random-city city-b)
   )
   (if (< random-a random-b)
-      (get-name city-a)
-      (get-name city-b)
+    (get-name city-a)
+    (get-name city-b)
   )
 )
 
